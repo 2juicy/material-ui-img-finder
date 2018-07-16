@@ -38,6 +38,7 @@ export default class Search extends Component {
                     value={this.state.SearchText}
                     onChange={this.onTextChange}
                     floatingLabelText='Search for Stocks'
+                    fullWidth={true}
                 />
                 <br />
                 <SelectField
