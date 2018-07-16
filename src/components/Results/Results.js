@@ -29,6 +29,7 @@ class Results extends Component {
                 <GridList cols={3}>
                     {images.map(img => (
                         <GridTile title={img.tags}
+                        style={{boxShadow: '0 6px 10px grey, 0 6px 10px grey'}}
                             key={img.id}
                             subtitle={
                                 <span>
@@ -41,7 +42,7 @@ class Results extends Component {
                                 </IconButton>
                             }
                         >
-                            <img src={img.largeImageURL} alt='No Image' />
+                            <img src={img.largeImageURL} alt='No Result' />
                         </GridTile>
                     ))}
                 </GridList>
