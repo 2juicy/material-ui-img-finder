@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import TextField from 'material-ui/TextField'
-import Paper from 'material-ui/Paper';
+import Paper from 'material-ui/Paper'
 import FlatButton from 'material-ui/FlatButton'
 import { List, ListItem } from 'material-ui/List'
 import IconButton from 'material-ui/IconButton'
-import DeleteIcon from 'material-ui/svg-icons/action/delete';
+import DeleteIcon from 'material-ui/svg-icons/action/delete'
+import Typography from '@material-ui/core/Typography'
 
 const styles = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
@@ -43,7 +44,7 @@ export default class Notes extends Component {
         let pinNote = this.state.notes.map((e, i) => {
             return (
                 <ListItem key={i} rightIconButton={<div style={{ display: 'flex' }}>
-                    <IconButton onClick={() => this.deleteNote(i)} >
+                    <IconButton aria-label="Delete" onClick={() => this.deleteNote(i)} >
                         <DeleteIcon />
                     </IconButton>
                 </div>}>{e}
@@ -51,7 +52,10 @@ export default class Notes extends Component {
             );
         });
         return (
-            <Paper style={{ width: "25%" }}>
+            <Paper style={{ width: "25%" , marginTop: "3em" }}>
+                <Typography variant="title">
+              Pinned Notes
+            </Typography>
                 <Paper style={{ paddingBottom: '20px' }}>
                     <List>
                         {this.state.notes.length === 0 ? <ListItem>Add a note!</ListItem> : pinNote}
