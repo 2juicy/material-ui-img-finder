@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import TextField from 'material-ui/TextField'
 import Paper from 'material-ui/Paper'
 import FlatButton from 'material-ui/FlatButton'
-import { List, ListItem } from 'material-ui/List'
-import IconButton from 'material-ui/IconButton'
+import { List, ListItem, ListItemSecondaryAction, IconButton } from '@material-ui/core'
 import DeleteIcon from 'material-ui/svg-icons/action/delete'
 import Typography from '@material-ui/core/Typography'
 
@@ -43,18 +42,19 @@ export default class Notes extends Component {
     render() {
         let pinNote = this.state.notes.map((e, i) => {
             return (
-                <ListItem key={i} rightIconButton={<div style={{ display: 'flex' }}>
-                    <IconButton aria-label="Delete" onClick={() => this.deleteNote(i)} >
-                        <DeleteIcon />
-                    </IconButton>
-                </div>}>{e}
+                <ListItem key={i}>{e}
+                    <ListItemSecondaryAction>
+                        <IconButton aria-label="Delete" onClick={() => this.deleteNote(i)} >
+                            <DeleteIcon />
+                        </IconButton>
+                    </ListItemSecondaryAction>
                 </ListItem>
             );
         });
         return (
-            <Paper style={{ width: "25%" , marginTop: "3em" }}>
-                <Typography variant="title">
-              Pinned Notes
+            <Paper style={{ width: "25%", marginTop: "3em" }}>
+                <Typography variant="title" style={{ textAlign: 'center'}}>
+                    Pinned Notes
             </Typography>
                 <Paper style={{ paddingBottom: '20px' }}>
                     <List>
