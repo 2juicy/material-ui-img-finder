@@ -1,17 +1,10 @@
 import React, { Component } from 'react'
-import TextField from 'material-ui/TextField'
-import Paper from 'material-ui/Paper'
-import FlatButton from 'material-ui/FlatButton'
-import { List, ListItem, ListItemSecondaryAction, IconButton } from '@material-ui/core'
-import DeleteIcon from 'material-ui/svg-icons/action/delete'
+import TextField from '@material-ui/core/TextField'
+import Paper from '@material-ui/core/Paper'
+import Button from '@material-ui/core/Button'
+import { List, ListItem, ListItemSecondaryAction, IconButton, ListItemText } from '@material-ui/core'
+import DeleteIcon from '@material-ui/icons/Delete'
 import Typography from '@material-ui/core/Typography'
-
-const styles = {
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-    border: 0,
-    color: 'white',
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-}
 
 export default class Notes extends Component {
     constructor() {
@@ -42,7 +35,7 @@ export default class Notes extends Component {
     render() {
         let pinNote = this.state.notes.map((e, i) => {
             return (
-                <ListItem key={i}>{e}
+                <ListItem key={i}><ListItemText>{e}</ListItemText>
                     <ListItemSecondaryAction>
                         <IconButton aria-label="Delete" onClick={() => this.deleteNote(i)} >
                             <DeleteIcon />
@@ -53,7 +46,7 @@ export default class Notes extends Component {
         });
         return (
             <Paper style={{ width: "25%", marginTop: "3em" }}>
-                <Typography variant="title" style={{ textAlign: 'center'}}>
+                <Typography variant="title" style={{ textAlign: 'center' }}>
                     Pinned Notes
             </Typography>
                 <Paper style={{ paddingBottom: '20px' }}>
@@ -67,11 +60,10 @@ export default class Notes extends Component {
                         value={this.state.currentNote}
                         onChange={this.onInputChange}
                     />
-                    <FlatButton
+                    <Button
+                        color="primary"
                         type="submit"
-                        label="Add Note"
-                        labelStyle={styles}
-                        onClick={this.onClick} />
+                        onClick={this.onClick}>Add Note</Button>
                 </form>
             </Paper>
         )
